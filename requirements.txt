@@ -3,7 +3,6 @@ torch==1.11.0
 torchvision==0.12.0
 git+https://github.com/huggingface/diffusers.git
 ftfy
-numpy==1.19.2
 matplotlib
 uuid
 opencv-python
