@@ -652,5 +652,4 @@ with image_blocks as demo:
             btn.click(fn=predict, inputs=[ddim_steps, gamma, gluing_kernel_size, gluing_kernel_sigma, omega, image, prompt], outputs=[image_out1, image_out2, community_icon, loading_icon])
 
 image_blocks.queue()
-image_blocks.launch(share=True)
-# image_blocks.launch()
+image_blocks.launch()
