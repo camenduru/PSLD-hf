@@ -32,6 +32,7 @@ import torchvision
 import pdb
 os.environ['CUDA_VISIBLE_DEVICES']='1'
 device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
+import subprocess
 ##
 
 # load safety model
@@ -344,8 +345,12 @@ if os.path.exists(opt.ckpt):
     model = load_model_from_config(config, f"{opt.ckpt}")
 else:
     print('No pretrained weights found in ', opt.ckpt)
-    print('Falling back to random weights...')
-    model = instantiate_from_config(config.model)
+    # print('Falling back to random weights...')
+    # model = instantiate_from_config(config.model)
+    
+    print('Downloading stable diffusion pretrained weights')
+    SD_PRETRAINED_PATH = 'https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.ckpt'
+    subprocess.call(['sh', './download.sh'])
 
 model = model.to(device)
 
