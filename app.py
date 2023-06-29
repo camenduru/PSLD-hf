@@ -349,8 +349,8 @@ else:
     # model = instantiate_from_config(config.model)
     
     print('Downloading stable diffusion pretrained weights')
-    SD_PRETRAINED_PATH = 'https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.ckpt'
     subprocess.call(['sh', './download.sh'])
+    model = load_model_from_config(config, f"{opt.ckpt}")
 
 model = model.to(device)
 
