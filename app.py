@@ -337,10 +337,15 @@ opt.ckpt = opt.sd_path+opt.ckpt
 
 seed_everything(opt.seed)
 
-pdb.set_trace()
+# pdb.set_trace()
 
 config = OmegaConf.load(f"{opt.config}")
-model = load_model_from_config(config, f"{opt.ckpt}")
+if os.path.exists(opt.ckpt):
+    model = load_model_from_config(config, f"{opt.ckpt}")
+else:
+    print('No pretrained weights found in ', opt.ckpt)
+    print('Falling back to random weights...')
+    model = instantiate_from_config(config.model)
 
 model = model.to(device)
 
