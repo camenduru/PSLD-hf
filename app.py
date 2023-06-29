@@ -629,11 +629,11 @@ with image_blocks as demo:
                 with gr.Column():
                     image = gr.Image(source='upload', tool='sketch', elem_id="image_upload", type="pil", label="Upload").style(height=400)
                     
-                    ddim_steps = gr.Slider(minimum = 1, maximum = 1000, step = 1, label = 'Number of diffusion steps (e.g. 200)', default=200, interative=True)
-                    gamma = gr.Slider(minimum = 0, maximum = 1, step=0.01, label = 'Gluing factor (e.g. 1e-1)', default=1e-1, interative=True)
-                    gluing_kernel_size = gr.Slider(minimum = 0, maximum = 100, step=1, label = 'Gluing kernel size (e.g. 15)', default=15, interative=True)
-                    gluing_kernel_sigma = gr.Slider(minimum = 0, maximum = 25, step=1, label = 'Gluing kernel sigma (e.g. 7)', default=7, interative=True)
-                    omega = gr.Slider(minimum = 0, maximum = 2, step=0.1, label = 'Measurement factor (e.g. 1)', default=1, interative=True)
+                    ddim_steps = gr.Slider(minimum = 1, maximum = 1000, step = 1, label = 'Number of diffusion steps (e.g. 200)', value=200, interative=True)
+                    gamma = gr.Slider(minimum = 0, maximum = 1, step=0.01, label = 'Gluing factor (e.g. 1e-1)', value=1e-1, interative=True)
+                    gluing_kernel_size = gr.Slider(minimum = 0, maximum = 100, step=1, label = 'Gluing kernel size (e.g. 15)', value=15, interative=True)
+                    gluing_kernel_sigma = gr.Slider(minimum = 0, maximum = 25, step=1, label = 'Gluing kernel sigma (e.g. 7)', value=7, interative=True)
+                    omega = gr.Slider(minimum = 0, maximum = 2, step=0.1, label = 'Measurement factor (e.g. 1)', value=1, interative=True)
 
                     with gr.Row(elem_id="prompt-container").style(mobile_collapse=False, equal_height=True):
                         prompt = gr.Textbox(placeholder = 'Your prompt (leave empty for posterior sampling)', show_label=False, elem_id="input-text")
