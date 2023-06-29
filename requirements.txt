@@ -7,7 +7,6 @@ numpy==1.19.2
 matplotlib
 uuid
 opencv-python
-opencv-contrib
 scipy
 accelerate
 git+https://github.com/openai/CLIP.git
