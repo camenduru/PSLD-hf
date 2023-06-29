@@ -339,6 +339,11 @@ opt.ckpt = opt.sd_path+opt.ckpt
 seed_everything(opt.seed)
 
 # pdb.set_trace()
+print(f"Is CUDA available: {torch.cuda.is_available()}")
+# True
+print(f"CUDA device: {torch.cuda.get_device_name(torch.cuda.current_device())}")
+# Tesla T4
+
 
 config = OmegaConf.load(f"{opt.config}")
 if os.path.exists(opt.ckpt):
