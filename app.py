@@ -661,5 +661,27 @@ with image_blocks as demo:
 
             btn.click(fn=predict, inputs=[ddim_steps, gamma, gluing_kernel_size, gluing_kernel_sigma, omega, image, prompt], outputs=[image_out1, image_out2, community_icon, loading_icon])
 
+
+            gr.HTML(
+                """
+                    <div class="footer">
+                        <p>Image Inpainting by <a href="https://huggingface.co/spaces/PSLD/PSLD" style="text-decoration: underline;" target="_blank">PSLD</a> - Generative Foundation Model by <a href="https://huggingface.co/runwayml" style="text-decoration: underline;" target="_blank">RunwayML</a> - Gradio Demo by 🤗 Hugging Face
+                        </p>
+                    </div>
+                    <div class="acknowledgments">
+                        <p><h4>LICENSE</h4>
+        The model is licensed with a <a href="https://huggingface.co/spaces/CompVis/stable-diffusion-license" style="text-decoration: underline;" target="_blank">CreativeML Open RAIL-M</a> license. The authors claim no rights on the outputs you generate, you are free to use them and are accountable for their use which must not go against the provisions set in this license. The license forbids you from sharing any content that violates any laws, produce any harm to a person, disseminate any personal information that would be meant for harm, spread misinformation and target vulnerable groups. For the full list of restrictions please <a href="https://huggingface.co/spaces/CompVis/stable-diffusion-license" target="_blank" style="text-decoration: underline;" target="_blank">read the license</a></p>
+                        <p><h4>Biases and content acknowledgment of Stable Diffusion</h4>
+                        Despite how impressive being able to turn text into image is, beware to the fact that this model may output content that reinforces or exacerbates societal biases, as well as realistic faces, pornography and violence. The model was trained on the <a href="https://laion.ai/blog/laion-5b/" style="text-decoration: underline;" target="_blank">LAION-5B dataset</a>, which scraped non-curated image-text-pairs from the internet (the exception being the removal of illegal content) and is meant for research purposes. You can read more in the <a href="https://huggingface.co/CompVis/stable-diffusion-v1-4" style="text-decoration: underline;" target="_blank">model card</a></p>
+                        <p><h4>Limitations of PSLD</h4>
+                        Our evaluation is based on <a href="https://huggingface.co/runwayml" style="text-decoration: underline;" target="_blank">Stable Diffusion</a> which was trained on the <a href="https://laion.ai/blog/laion-5b/" style="text-decoration: underline;" target="_blank">LAION-5B dataset</a>.
+                        Biases in this dataset and the generative foundation model will be implicitly affecting our algorithm. Our method
+                        can work with any latent diffusion model and we expect new foundation models trained on better datasets like <a href="https://www.datacomp.ai/" style="text-decoration: underline;" target="_blank">DataComp</a>
+                        to mitigate these issues.                    
+                        </p>
+                        </div>
+                """
+            )
+            
 image_blocks.queue()
 image_blocks.launch()
