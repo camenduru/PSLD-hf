@@ -415,6 +415,9 @@ def predict(ddim_steps, gamma, gluing_kernel_size, gluing_kernel_sigma, omega, d
     opt.ddim_steps = ddim_steps
     opt.gamma = gamma
     opt.omega = omega
+    if opt.gamma==0 and opt.omega==0:
+        opt.inpainting = 0
+        opt.general_inverse = 0
 
     opt.prompt = prompt
     init_image = dict["image"].convert("RGB").resize((512, 512))
