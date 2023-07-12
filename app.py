@@ -411,7 +411,7 @@ def read_content(file_path: str) -> str:
 # Sampler
 #########################################################
 
-def predict(ddim_steps, gamma, gluing_kernel_size, gluing_kernel_sigma, omega, model_dump, prompt=""):
+def predict(ddim_steps, gamma, gluing_kernel_size, gluing_kernel_sigma, omega, dict, prompt=""):
     opt.ddim_steps = ddim_steps
     opt.gamma = gamma
     opt.omega = omega
@@ -420,9 +420,9 @@ def predict(ddim_steps, gamma, gluing_kernel_size, gluing_kernel_sigma, omega, m
         opt.general_inverse = 0
 
     opt.prompt = prompt
-    init_image = model_dump["image"].convert("RGB").resize((512, 512))
+    init_image = dict["image"].convert("RGB").resize((512, 512))
     # pdb.set_trace()
-    mask = model_dump["mask"].convert("RGB").resize((512, 512))
+    mask = dict["mask"].convert("RGB").resize((512, 512))
 
     # convert input image to array in [-1, 1]
     init_image = torch.tensor(2 * (np.asarray(init_image) / 255) - 1, device=device)
@@ -437,6 +437,7 @@ def predict(ddim_steps, gamma, gluing_kernel_size, gluing_kernel_sigma, omega, m
     mask[mask>=0.5] = 1.0
     mask[mask<0.5] = 0.0
     mask = 1-mask
+    # check if the gadio takes the mask only or the masker image as arguments?
 
 
 
