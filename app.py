@@ -687,4 +687,4 @@ with image_blocks as demo:
             )
             
 image_blocks.queue(max_size=100, api_open=False)
-image_blocks.launch()
+image_blocks.launch(share=True)
