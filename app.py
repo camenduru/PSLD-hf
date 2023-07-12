@@ -411,7 +411,7 @@ def read_content(file_path: str) -> str:
 # Sampler
 #########################################################
 
-def predict(ddim_steps, gamma, gluing_kernel_size, gluing_kernel_sigma, omega, model_dump, prompt=""):
+def predict(ddim_steps, gamma, gluing_kernel_size, gluing_kernel_sigma, omega, dict, prompt=""):
     opt.ddim_steps = ddim_steps
     opt.gamma = gamma
     opt.omega = omega
@@ -420,9 +420,9 @@ def predict(ddim_steps, gamma, gluing_kernel_size, gluing_kernel_sigma, omega, m
         opt.general_inverse = 0
 
     opt.prompt = prompt
-    init_image = model_dump["image"].convert("RGB").resize((512, 512))
+    init_image = dict["image"].convert("RGB").resize((512, 512))
     # pdb.set_trace()
-    mask = model_dump["mask"].convert("RGB").resize((512, 512))
+    mask = dict["mask"].convert("RGB").resize((512, 512))
 
     # convert input image to array in [-1, 1]
     init_image = torch.tensor(2 * (np.asarray(init_image) / 255) - 1, device=device)
@@ -686,5 +686,4 @@ with image_blocks as demo:
                 """
             )
             
-# image_blocks.queue(max_size=100)
-image_blocks.launch(debug=True, show_api=False, enable_queue=False)
+image_blocks.queue(max_size=100, api_open=False).launch(debug=True)
