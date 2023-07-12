@@ -353,8 +353,8 @@ else:
     # print('Falling back to random weights...')
     # model = instantiate_from_config(config.model)
     
-    print('Downloading stable diffusion pretrained weights')
-    subprocess.call(['sh', './download.sh'])
+    # print('Downloading stable diffusion pretrained weights')
+    # subprocess.call(['sh', './download.sh'])
     model = load_model_from_config(config, "model.ckpt")
 
 model = model.to(device)
