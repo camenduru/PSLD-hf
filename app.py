@@ -687,4 +687,4 @@ with image_blocks as demo:
             )
             
 # image_blocks.queue(max_size=100)
-image_blocks.launch(show_api=False, enable_queue=False)
+image_blocks.launch(debug=True, show_api=False, enable_queue=False)
